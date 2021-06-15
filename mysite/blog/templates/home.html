@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{% block content %}
+    <div class="container">
+
+    	<div class="row">
+    	<div class="col-3"></div>
+    	<div class="col-12 col-md-6">
+    		
+            {% for postagem in postagens %}
+            <div class="card shadow mt-3">
+				<div class="card-body">
+			    	<h5 class="card-title"><a href="{% url 'edit_postagem' pk=postagem.pk %}">{{postagem.titulo}}</a></h5>
+                    <i><b>{{postagem.data_publicacao}} - Autor: {{postagem.autor.username}}</b></i>
+			    	<p class="card-text mt-2">{{postagem.texto}}</p>
+			    	<a href="{% url 'detalhe_postagem' pk=postagem.pk %}" class="btn btn-primary">Ver mais</a>
+                    <a href="{% url 'del_postagem' pk=postagem.pk %}" class="btn btn-danger">Deletar</a>
+		  		</div>
+			</div>
+            {% endfor %}
+    		
+    	</div>
+    	<div class="col-3"></div>
+    </div>
+    </div>
+{% endblock %}
